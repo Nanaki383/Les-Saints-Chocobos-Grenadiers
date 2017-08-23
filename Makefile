@@ -6,7 +6,7 @@
 #    By: rda-conc <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/23 14:48:52 by rda-conc          #+#    #+#              #
-#    Updated: 2017/08/23 21:10:16 by rda-conc         ###   ########.fr        #
+#    Updated: 2017/08/23 23:06:31 by mlauer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 .PHONY: all clean fclean
@@ -46,10 +46,10 @@ SRCO = ft_get_params.o\
 
 all: $(NAME)
 
-$(NAME): compile
+$(NAME): $(SRCO)
 	gcc -Wall -Werror -Wextra -o $(NAME) $(SRCO)
 
-compile:
+.c.o:
 	gcc -Wall -Werror -Wextra -c $(SRC)
 
 clean:
