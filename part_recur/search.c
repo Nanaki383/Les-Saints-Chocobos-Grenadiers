@@ -6,7 +6,7 @@
 /*   By: glegendr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 03:04:58 by glegendr          #+#    #+#             */
-/*   Updated: 2017/08/23 15:21:55 by glegendr         ###   ########.fr       */
+/*   Updated: 2017/08/23 16:14:22 by kfavier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,16 @@ void	search(char **tab, char empty, char obst, char sqr)
 	s.size = 0;
 	s.cmax = 0;
 	s.border = 3;
-	int r;
-	r = 0;
 	check(tab, s);
 }
 
 int		main(int argc, char **argv)
 {
-	argc = 0;
 	char empty;
 	char obst;
 	char sqr;
 
+	argc = 0;
 	empty = '.';
 	obst = 'o';
 	sqr = 'X';
