@@ -6,7 +6,7 @@
 #    By: rda-conc <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/23 14:48:52 by rda-conc          #+#    #+#              #
-#    Updated: 2017/08/23 15:41:17 by rda-conc         ###   ########.fr        #
+#    Updated: 2017/08/23 19:09:11 by rda-conc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 .PHONY: all clean fclean
@@ -23,12 +23,13 @@ SRCO = ft_get_params.o ft_str_is_printable.o ft_check_map_empty.o ft_putchar.o \
 	   ft_putstr.o ft_strlen.o ft_get_number.o ft_read.o affichage.o check.o \
 	   search.o
 
+all: $(NAME)
 
-all: compile
+$(NAME): compile
 	gcc -Wall -Werror -Wextra -o $(NAME) $(SRCO)
 
 compile:
-	gcc -c $(SRC)
+	gcc -Wall -Werror -Wextra -c $(SRC)
 
 clean:
 	rm -f $(SRCO)
