@@ -6,13 +6,13 @@
 /*   By: mlauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 11:53:21 by mlauer            #+#    #+#             */
-/*   Updated: 2017/08/23 16:22:57 by mlauer           ###   ########.fr       */
+/*   Updated: 2017/08/23 20:54:12 by mlauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef READ_H
 # define READ_H
-# define SIZE 819
+# define SIZE 8192
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -39,6 +39,6 @@ int					ft_strlen(char *str);
 int					ft_convert_to_tab(char *str, t_r *r);
 int					ft_get_params(char *buf_copy, t_r *r);
 int					ft_check_map_empty(char *buf_copy, t_r *r);
-int					ft_buf_is_printable(char *buf);
+void				ft_free_tab(t_r *r);
 
 #endif
