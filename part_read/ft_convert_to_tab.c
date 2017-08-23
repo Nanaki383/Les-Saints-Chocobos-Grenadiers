@@ -6,7 +6,7 @@
 /*   By: mlauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/14 22:58:11 by mlauer            #+#    #+#             */
-/*   Updated: 2017/08/23 15:30:02 by mlauer           ###   ########.fr       */
+/*   Updated: 2017/08/23 20:12:27 by mlauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int			count_line(char *str, t_r *r)
 	count = 0;
 	space = 0;
 	if (str[i] == '\0')
-		return (0);
+		return (-1);
 	while (str[i] != '\0')
 	{
 		while (str[++i] != '\n' && str[i])
@@ -34,7 +34,7 @@ int			count_line(char *str, t_r *r)
 		}
 	}
 	if (r->lenght != count)
-		return (-3);
+		return (-2);
 	else
 		return (count);
 }
@@ -68,7 +68,7 @@ int			ft_convert_to_tab(char *str, t_r *r)
 
 	z = 0;
 	i = r->paramline;
-	if ((r->map = malloc(sizeof(char) * (count_line(str, r) + 2))) == 0)
+	if (!(r->map =(char **)malloc(sizeof(char*) * (count_line(str, r) + 1))))
 		return (1);
 	while (str[i] != 0)
 	{
@@ -77,7 +77,7 @@ int			ft_convert_to_tab(char *str, t_r *r)
 		if (str[i] != '\0')
 		{
 			y = 0;
-			if (!(r->map[z] = malloc(sizeof(char) *
+			if (!(r->map[z] =(char *)malloc(sizeof(char) *
 							strlen_line(str, i, r) + 1)))
 				return (1);
 			while (str[i] != '\n' && str[i])
