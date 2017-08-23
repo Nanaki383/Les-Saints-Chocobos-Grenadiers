@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_header.h                                        :+:      :+:    :+:   */
+/*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kfavier <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: glegendr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/22 14:10:58 by kfavier           #+#    #+#             */
-/*   Updated: 2017/08/22 14:11:31 by kfavier          ###   ########.fr       */
+/*   Created: 2017/08/22 09:49:11 by glegendr          #+#    #+#             */
+/*   Updated: 2017/08/23 21:39:11 by glegendr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-=fndef FT_HEADER_H
+#ifndef FT_HEADER_H
 # define FT_HEADER_H
-#include <stdlib.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include "read.h"
 
-typedef    struct    s_set_point
+typedef	struct	s_set_point
 {
-	char **coormax;
-	int imax;
-	int smax;
-	int lmax;
-	char obst;
-	char empty;
-	char square;
-	int i;
-	int j;
-	int size;
-	char **tab;
-}                t_set_point;
-char    **check(char **tab, struct s_set_point s);
-int        checkcol(char **tab, struct s_set_point s);
-int        checkline(char **tab, struct s_set_point s);
-void    display(char **tab, struct s_set_point s);
-#endif 
+	int		x;
+	int		y;
+	int		cmax;
+	int		border;
+	int		lmax;
+	int		imax;
+	int		smax;
+	char	obst;
+	char	empty;
+	char	square;
+	int		i;
+	int		j;
+	int		size;
+	char	**tab;
+}				t_set_point;
+
+void			search(t_r *r);
+int				check(struct s_set_point s);
+int				checkcol(struct s_set_point s);
+int				checkline(struct s_set_point s);
+int				affichage(struct s_set_point s);
+#endif

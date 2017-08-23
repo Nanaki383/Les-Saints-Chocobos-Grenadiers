@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   affichage.c                                        :+:      :+:    :+:   */
+/*   search.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glegendr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/22 16:14:30 by glegendr          #+#    #+#             */
-/*   Updated: 2017/08/23 21:26:18 by glegendr         ###   ########.fr       */
+/*   Created: 2017/08/22 03:04:58 by glegendr          #+#    #+#             */
+/*   Updated: 2017/08/23 21:39:13 by glegendr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_header.h"
+#include "read.h"
 
-int		affichage(struct s_set_point s)
+void	search(t_r *r)
 {
-	int i;
-	int j;
+	t_set_point s;
 
-	i = 0;
-	j = 0;
-	while (s.tab[i])
-	{
-		while (s.tab[i][j] != '\0')
-		{
-			if (s.x <= i && i <= (s.x + s.smax - 1)
-					&& s.y <= j && j <= (s.y + s.smax - 1))
-			{
-				s.tab[i][j] = s.square;
-			}
-			write(1, &s.tab[i][j], 1);
-			j++;
-		}
-		write(1, "\n", 1);
-		j = 0;
-		i++;
-	}
-	return (1);
+	s.obst = r->obs;
+	s.empty = r->empty;
+	s.square = r->full;
+	s.i = 0;
+	s.j = 0;
+	s.lmax = r->lenght;
+	s.smax = 0;
+	s.imax = r->width;
+	s.size = 0;
+	s.tab = r->map;
+	check(s);
 }
