@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_free_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/23 01:22:40 by mlauer            #+#    #+#             */
-/*   Updated: 2017/08/23 01:25:10 by mlauer           ###   ########.fr       */
+/*   Created: 2017/08/23 20:58:34 by mlauer            #+#    #+#             */
+/*   Updated: 2017/08/23 22:56:35 by mlauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "read.h"
 
-void		ft_putstr(char *str)
+void		ft_free_tab(t_r *r)
 {
-	write(1, str, ft_strlen(str));
+	int i;
+
+	i = 0;
+	if (r->map != NULL)
+	{
+		while (r->lenght > i)
+		{
+			free(r->map[i]);
+			i++;
+		}
+		free(r->map);
+		r->map = NULL;
+	}
+	r->width = 0;
+	r->lenght = 0;
+	r->paramline = 0;
 }

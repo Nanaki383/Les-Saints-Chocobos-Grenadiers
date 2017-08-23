@@ -6,7 +6,7 @@
 /*   By: mlauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/23 15:37:17 by mlauer            #+#    #+#             */
-/*   Updated: 2017/08/23 22:08:12 by mlauer           ###   ########.fr       */
+/*   Updated: 2017/08/23 22:53:54 by mlauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int				ft_read(int fd, t_r *r)
 	if ((ft_get_params(buf_copy, r) || ft_convert_to_tab(buf_copy, r) ||
 				ft_check_map_empty(buf_copy, r)))
 		return (ft_free_copy(buf_copy, 1));
-	return (ft_free_copy(buf_copy, 1));
+	return (ft_free_copy(buf_copy, 0));
 }
 
 int				main(int argc, char **argv)
@@ -87,7 +87,8 @@ int				main(int argc, char **argv)
 			fd = open(argv[arg], O_RDONLY);
 			if (fd < 0 || ft_read(fd, &r))
 				ft_error();
-			search(&r);
+			else
+				search(&r);
 			ft_free_tab(&r);
 			close(fd);
 		}
@@ -95,8 +96,9 @@ int				main(int argc, char **argv)
 	{
 		if (ft_read_stdin(&r))
 			ft_error();
+		else
+			search(&r);
+		ft_free_tab(&r);
 	}
-	else
-		return (1);
 	return (0);
 }
